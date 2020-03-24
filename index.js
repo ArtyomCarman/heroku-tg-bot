@@ -6,5 +6,5 @@ const bot = new telegramBot(TOKET, {
 });
 
 bot.on('message', msg => {
-  bot.sendMessage(msg.chat.id, `Hi, ${msg.from.first_name}`)
+  bot.sendMessage(msg.chat.id, `Здорова ёпта, ${msg.from.first_name}`)
 })
