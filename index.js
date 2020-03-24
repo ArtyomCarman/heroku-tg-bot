@@ -1,10 +1,12 @@
 const telegramBot = require("node-telegram-bot-api");
-const TOKET = "1119191635:AAF473wHb15z1ebiGtMQ_eva0NiPfgx-YB0";
+const TOKEN = require('./token.js');
 
-const bot = new telegramBot(TOKET, {
-  polling: true
-});
+const bot = new telegramBot(TOKEN, {polling: true});
 
 bot.on('message', msg => {
+  console.log(msg)
+  if (msg.from.id !== 533139971) {
+    bot.sendMessage(msg.chat.id, `Извини, но ты лох`)
+  }
   bot.sendMessage(msg.chat.id, `Здорова ёпта, ${msg.from.first_name}`)
 })
