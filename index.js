@@ -1,11 +1,5 @@
 const telegramBot = require("node-telegram-bot-api");
 const TOKEN = require("./token.js");
-const http = require("http");
-
-const PORT = process.env.PORT || 3000;
-
-const server = http.createServer();
-server.listen(PORT);
 
 const bot = new telegramBot(TOKEN, { polling: true });
 
