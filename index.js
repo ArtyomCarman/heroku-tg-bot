@@ -1,7 +1,17 @@
-const telegramBot = require("node-telegram-bot-api");
-const bot = new telegramBot(process.env.TOKEN, { polling: true });
-process.env.NTBA_FIX_319 = 1
-bot.on("message", msg => {
-  console.log(msg);
-  bot.sendMessage(msg.chat.id, `Здорова ёпта, ${msg.from.first_name}`);
+const TOKEN = process.env.TOKEN;
+const TelegramBot = require("node-telegram-bot-api");
+const options = {
+  webHook: {
+    port: process.env.PORT
+  }
+};
+const url = process.env.APP_URL || 'https://heroku-tg-botik.herokuapp.com:443';
+const bot = new TelegramBot(TOKEN, options);
+
+
+bot.setWebHook(`${url}/bot${TOKEN}`);
+
+
+bot.on('message', msg => {
+  bot.sendMessage(msg.chat.id, `Здарова ${msg.chat.first_name}`);
 });
