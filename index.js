@@ -16,7 +16,7 @@ const bot = new TelegramBot(TOKEN, options);
 
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
-bot.onText("//start/", (msg) => {
+bot.onText("/\/start/", (msg) => {
   const text = `Ку, ${msg.chat.first_name}\nЧего хочешь?`;
   bot.sendMessage(msg.chat.id, text, {
     reply_markup: {
