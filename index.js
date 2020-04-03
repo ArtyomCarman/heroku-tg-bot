@@ -19,7 +19,7 @@ bot.onText(/\/start/, (msg) => {
   const text = `Ку, ${msg.chat.first_name}\nЧего хочешь?`;
   bot.sendMessage(msg.chat.id, text, {
     reply_markup: {
-      keyboard: [["Огромный член", "Расписание звонков"]],
+      keyboard: [["Огромный член", "Случайную картинку"]],
     },
   });
 });
@@ -32,18 +32,18 @@ bot.on("message", (msg) => {
         "Ну, а кто не хочет?\nРиторический вопрос..."
       );
       break;
-    case "расписание звонков":
-      bot.sendMessage(msg.chat.id, parsingYatt());
+    case "Случайную картинку":
+      bot.sendPhoto(msg.chat.id, "https://picsum.photos/id/1011/200");
       break;
   }
 });
 
-const parsingYatt = () => {
-  const URL2 = "https://yatt.framework.team/dashboard";
-  return request(URL2, (err, res, body) => {
-    if (err) throw err;
-    let $ = cheerio.load(body);
-    let title = $("title");
-    return title.text();
-  });
-};
+// const parsingYatt = () => {
+//   const URL2 = "https://yatt.framework.team/dashboard";
+//   return request(URL2, (err, res, body) => {
+//     if (err) throw err;
+//     let $ = cheerio.load(body);
+//     let title = $("title");
+//     return title.text();
+//   });
+// };
